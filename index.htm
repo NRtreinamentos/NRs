@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="input-container">
+        <label class="superior" for="training-number">
+            <svg id="people" xmlns="http://www.w3.org/2000/svg" width="130" height="130" fill="currentColor"
+                class="bi bi-people" viewBox="0 0 16 16">
+                <path
+                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4" />
+            </svg>
+            <div class="title">Treinamentos</div>
+        </label>
+        <div class="inferior">
+            <input placeholder=" Digite a matrícula" type="text" id="training-number">
+            <select id="sector" onchange="loadSectorScript()">
+                <option value="">Selecione o setor</option>
+                <option value="RPE">RPE</option>
+                <option value="Utilidades">Utilidades</option>
+            </select>
+            <button class="primary-button" onclick="showTraining()">Sign in</button>
+        </div>
+    </div>
+
+    <div id="geral">
+
+        <div id="nave-bar" class="nave" style="display: none;">
+            <div class="top-bar">
+                <button class="back-button" onclick="goBack()">
+                    <ion-icon name="arrow-undo-outline"></ion-icon>
+                </button>
+                <div class="tite">Treinamentos</div>
+            </div>
+
+            <div class="nav-bar">
+                <button class="nav-item" onclick="homeOn(); setActive(this);">
+                    <i><ion-icon name="home-outline"></ion-icon></i>
+                </button>
+
+                <button class="nav-item" onclick="treinamentoOn(); setActive(this);">
+                    <i><ion-icon name="person-circle-outline"></ion-icon></i>
+                </button>
+
+                <button class="nav-item" onclick="contadorOn(); setActive(this);">
+                    <i><ion-icon name="calendar-number-outline"></ion-icon></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="painel-bar" class="painel" style="display: none;">
+            <h1>ESTAMOS TRABALHANDO HÁ</h1>
+            <div class="dias-container">
+                <div class="dias" id="dias">
+                    000
+                </div>
+                <span>DIAS SEM ACIDENTES COM AFASTAMENTO</span>
+            </div>
+            <div class="recorde">
+                <p>NOSSO RECORDE É DE</p>
+                <div class="dias-recorde" id="diasRecorde">
+                    000
+                </div>
+                <p>DIAS</p>
+            </div>
+        </div>
+
+        <div id="tela-bar" class="tela-container" style="display: none;">
+            <!-- Texto de fundo com efeito 3D -->
+            <div class="background-text">
+                <span class="bp">bp</span> bioenergy
+            </div>
+
+            <div class="fundo"></div>
+
+            <!-- Cabeçalho -->
+            <img id="simbolo" src="/imagem/simbolo.jpeg"></img>
+            <div class="header">
+                <h1>Bem-vindo, <span id="username"></span></h1>
+            </div>
+
+            <!-- Mensagem de boas-vindas -->
+            <div class="content-mens">
+                <p class="welcome-message">A nossa prioridade é você! Segurança e bem-estar para todos os colaboradores.
+                </p>
+            </div>
+
+            <img id="logo" src="/imagem/logo.jpeg"></img>
+
+
+            <!-- Elementos de animação -->
+            <div class="animation-circle"></div>
+        </div>
+
+        <div id="training-container" style="display: none;">
+            <div id="header">
+                <h2 id="person-name"></h2>
+            </div>
+            <h3 class="tht">Lista de Treinamentos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Nome do Treinamento
+                            <button class="icon-button" onclick="showFilterInput(), botaovoltarativo()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
+                                    class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg>
+                            </button>
+                            <input type="text" id="training-filter" placeholder=" Filtrar..." onkeyup="filterTrainings()"
+                                style="display: none;">
+                            <button class="voltar-filtro" id="voltar" onclick="ativavoltar()" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                                    class="bi bi-chevron-bar-up" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M3.646 11.854a.5.5 0 0 0 .708 0L8 8.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708M2.4 5.2c0 .22.18.4.4.4h10.4a.4.4 0 0 0 0-.8H2.8a.4.4 0 0 0-.4.4" />
+                                </svg>
+                            </button>
+                        </th>
+                        <th>Data de Validade</th>
+                    </tr>
+                </thead>
+                <tbody id="training-list">
+                    <!-- Conteúdo gerado pelo JavaScript -->
+                </tbody>
+            </table>
+            <br>
+            <p id="updated-at">Atualizado em <span id="update-date">15/06/2024</span></p>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
