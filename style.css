@@ -21,6 +21,22 @@ body {
     --apple-mobile-web-app-status-bar-style:black;
 }
 
+html {
+    background-color: #ffffff; /* Fundo da aplicação */
+}
+
+/* Para dispositivos com suporte ao `env()` */
+@supports (background: env(safe-area-inset-bottom)) {
+    .bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: env(safe-area-inset-bottom); /* Define altura para incluir notch/borda */
+        background-color: #000000; /* Cor preta para a barra */
+    }
+}
+
 .content {
     padding: 20px;
   }
