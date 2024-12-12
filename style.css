@@ -22,7 +22,7 @@ body {
 }
 
 html {
-    background-color: #ffffff; /* Fundo da aplicação */
+    background-color: #000000; /* Fundo da aplicação */
 }
 
 /* Para dispositivos com suporte ao `env()` */
